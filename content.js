@@ -1,6 +1,6 @@
 (async function autofillMindatForm() {
   const catalogId = "15";
-  const url = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?catalog=" + catalogId;
+  const url = "https://script.google.com/macros/s/AKfycbwiDTzCPJpgk_srPMP7TF2g4eYdesvJF_InSGSYv-BN-1CBO1h0hVThFjIMXOMnmSk7AA/exec?catalog=" + catalogId;
 
   try {
     const response = await fetch(url);
