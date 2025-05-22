@@ -5,6 +5,9 @@
   "description": "Autofill the Mindat catalog form using Google Sheet data.",
   "permissions": ["scripting", "activeTab"],
   "host_permissions": ["https://www.mindat.org/catedit.php"],
+  "action": {
+    "default_popup": "popup.html"
+  },
   "content_scripts": [
     {
       "matches": ["https://www.mindat.org/catedit.php"],
@@ -13,6 +16,12 @@
     }
   ],
   "icons": {
-    "48": "icon.png"
-  }
+    "48": "icon.jpg"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["mindat_export.csv"],
+      "matches": ["https://www.mindat.org/*"]
+    }
+  ]
 }
