@@ -8,6 +8,12 @@ window.addEventListener('mindat-autofill', (e) => {
   }
 });
 
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  if (msg.type === 'mindat-autofill' && msg.catalogId) {
+    autofillMindatForm(msg.catalogId);
+  }
+});
+
 async function autofillMindatForm(catalogId) {
   // Fetch the CSV file from the extension's directory
   const url = chrome.runtime.getURL("mindat_export.csv");
@@ -29,10 +35,10 @@ async function autofillMindatForm(catalogId) {
   // Date of acquisition
   if (data["Acquisition Year"]) {
     const dateStr = data["Acquisition Year"].split(' ')[0];
-    const [year, month, day] = dateStr.split('-');
-    if (year) document.querySelector("#cat_acqyear").value = year;
-    if (month) document.querySelector("#cat_acqmonth").value = String(Number(month));
-    if (day) document.querySelector("#cat_acqday").value = String(Number(day));
+    const parts = dateStr.split('-');
+    if (parts[0]) document.querySelector("#cat_acqyear").value = parts[0];
+    if (parts[1]) document.querySelector("#cat_acqmonth").value = String(Number(parts[1]));
+    if (parts[2]) document.querySelector("#cat_acqday").value = String(Number(parts[2]));
   }
 
   const dims = (data["Dimensions"] || "").match(/(\d+)[x×](\d+)[x×](\d+)/);
