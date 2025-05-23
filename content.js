@@ -33,29 +33,64 @@ async function autofillMindatForm(catalogId) {
   document.querySelector("#cat_locality").value = data["Locality"] || "";
 
   // Date of acquisition
-  if (data["Acquisition Year"]) {
-    const dateStr = data["Acquisition Year"].split(' ')[0];
-    const parts = dateStr.split('-');
-    if (parts[0]) document.querySelector("#cat_acqyear").value = parts[0];
-    if (parts[1]) document.querySelector("#cat_acqmonth").value = String(Number(parts[1]));
-    if (parts[2]) document.querySelector("#cat_acqday").value = String(Number(parts[2]));
+  console.log("Date of Acquisition raw:", data["Date of Acquisition"]);
+  const dateStr = data["Date of Acquisition"] ? data["Date of Acquisition"].split(' ')[0] : "";
+  console.log("dateStr:", dateStr);
+  const parts = dateStr.split('-');
+  console.log("Parsed parts:", parts);
+
+  // Year (dropdown)
+  if (parts[0]) {
+    const yearSel = document.querySelector("#cat_acqyear");
+    if (yearSel) {
+      yearSel.value = parts[0];
+      yearSel.dispatchEvent(new Event('change', { bubbles: true }));
+      console.log("Set year:", parts[0]);
+    }
   }
 
-  const dims = (data["Dimensions"] || "").match(/(\d+)[x×](\d+)[x×](\d+)/);
-  if (dims) {
-    document.querySelector("#cat_w").value = dims[1];
-    document.querySelector("#cat_h").value = dims[2];
-    document.querySelector("#cat_d").value = dims[3];
+  // Month (dropdown, 1-12)
+  if (parts[1]) {
+    const monthVal = String(Number(parts[1])); // "05" → "5"
+    const monthSel = document.querySelector("#cat_acqmonth");
+    if (monthSel) {
+      monthSel.value = monthVal;
+      monthSel.dispatchEvent(new Event('change', { bubbles: true }));
+      console.log("Set month:", monthVal);
+    }
+  }
+
+  // Day (text input)
+  if (parts[2]) {
+    const dayInput = document.querySelector("#cat_acqday");
+    if (dayInput) {
+      dayInput.value = String(Number(parts[2]));
+      dayInput.dispatchEvent(new Event('input', { bubbles: true }));
+      console.log("Set day:", String(Number(parts[2])));
+    }
+  }
+
+  if (data["Dimensions"]) {
+    // Accepts "WxHxD" or "W x H x D" or "W×H×D"
+    const dims = data["Dimensions"].match(/(\d+)[x×](\d+)[x×](\d+)/);
+    if (dims) {
+      document.querySelector("#cat_w").value = dims[1];
+      document.querySelector("#cat_h").value = dims[2];
+      document.querySelector("#cat_d").value = dims[3];
+    }
   }
 
   document.querySelector("#cat_source").value = data["Source"] || "";
-  document.querySelector("#cat_storage").value = data["Storage"] || "";
-  document.querySelector("#cat_description").value = data["Description"] || "";
+  // Storage Location
+  document.querySelector("#cat_storage").value = data["Storage Location"] || "";
+
+  // Notes
   const notesField = document.querySelector("#cat_notes");
   if (notesField) notesField.value = data["Notes"] || "";
 
-  if (data["Mindat ID"]) {
-    document.querySelector("#cat_minid").value = data["Mindat ID"];
+  // Min ID
+  if (data["Min ID"]) {
+    document.querySelector("#cat_minid").value = data["Min ID"];
   }
   if (data["Max Crystal Size"]) {
     document.querySelector("#cat_xtal").value = data["Max Crystal Size"];
@@ -73,17 +108,25 @@ async function autofillMindatForm(catalogId) {
     });
   } else {
     // Legacy support for species1-species5
-    const species = [data["Species1"], data["Species2"], data["Species3"], data["Species4"], data["Species5"]];
-    species.forEach((val, idx) => {
-      if (val && idx < 8) {
-        const field = document.querySelector(`#cat_min${idx + 1}`);
-        if (field) {
-          field.value = val;
-          field.dispatchEvent(new Event('change', { bubbles: true })); // <-- trigger UI update
-        }
+    for (let i = 1; i <= 5; i++) {
+      const species = data[`Species ${i}`];
+      if (species) {
+        document.querySelector(`#cat_min${i}`).value = species;
       }
-    });
+    }
   }
 
   console.log("✅ Form autofilled from CSV file");
+  const yearSel = document.querySelector("#cat_acqyear");
+  if (yearSel) {
+    console.log("Year options:", Array.from(yearSel.options).map(o => o.value));
+  }
+  const monthSel = document.querySelector("#cat_acqmonth");
+  if (monthSel) {
+    console.log("Month options:", Array.from(monthSel.options).map(o => o.value));
+  }
+
+  if (!data["Date of Acquisition"]) {
+    console.warn("No Date of Acquisition in CSV for this Catalog ID");
+  }
 }
