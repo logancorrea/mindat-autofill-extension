@@ -3,25 +3,41 @@
   "name": "Mindat Autofill",
   "version": "1.0",
   "description": "Autofill the Mindat catalog form using Google Sheet data.",
-  "permissions": ["scripting", "activeTab"],
-  "host_permissions": ["https://www.mindat.org/catedit.php"],
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.mindat.org/*"
+  ],
   "action": {
-    "default_popup": "popup.html"
+    "default_icon": {
+      "16": "icon.jpg",
+      "32": "icon.jpg",
+      "48": "icon.jpg",
+      "128": "icon.jpg"
+    }
+  },
+  "icons": {
+    "16": "icon.jpg",
+    "32": "icon.jpg",
+    "48": "icon.jpg",
+    "128": "icon.jpg"
   },
   "content_scripts": [
     {
-      "matches": ["https://www.mindat.org/catedit.php"],
+      "matches": ["https://www.mindat.org/catedit.php*"],
       "js": ["papaparse.min.js", "content.js"],
       "run_at": "document_idle"
     }
   ],
-  "icons": {
-    "48": "icon.jpg"
-  },
   "web_accessible_resources": [
     {
       "resources": ["mindat_export.csv"],
       "matches": ["https://www.mindat.org/*"]
     }
-  ]
+  ],
+  "side_panel": {
+    "default_path": "sidebar.html"
+  }
 }

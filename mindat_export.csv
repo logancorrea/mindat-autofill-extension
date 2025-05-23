@@ -1,45 +1,74 @@
-Catalog ID,Min ID,Specimen Title,Date of Acquisition,Locality,Species 1,Species 2,Species 3,Species 4,Species 5,Dimensions,Max Crystal Size,Storage Location,Notes
-1,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Quartz,Var. Chalcedony,,,,,,,
-2,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,Hematite,,,,,,,Micro
-3,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,,,,,,,,Micro
-4,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,Ilmenite,,,,,,,Micro
-5,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,Hematite,,,,,,,"Micro, hematite inclusion"
-6,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,,,,,,,,Micro
-7,,,,,Topaz,,,,,,,,Micro
-,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",,,,,,,,,
-9,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,,,,,,,,Micro
-10,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,Hematite,,,,,,,"Micro, hematite inclusion"
-11,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,,,,,,,,Micro
-12,,,,"Marysvale Mining District, Piute County, Utah, USA",Topaz,,,,,,,,Micro
-13,8RD-LHQ,,,"Navidad Mine, Indé Municipality, Durango, Mexico",Bixbyite-(Fe),,,,,,,,Micro
-14,,,,"Katanga, DR Congo",Creedite,Fluorite,,,,,,,Fluorescent
-15,,Brenham Meteorite,,"Brenham meteorite, Kimberly farm, Kiowa County, Kansas, USA",Malachite,,,,,,,,
-16,,,,Unkown Locality,Iron,Taenite,Forsterite,,,,,,Iron (Var: Kamacite)
-17,,,,Unkown Locality,Fluorapophyllite-(K),Stilbite-Ca,,,,,,,
-18,,Amethyst and Bixbyite,,"Marysvale Mining District, Piute County, Utah, USA",Wulfenite,,,,,,,,
-19,,,,Unkown Locality,Quartz,Bixbyite-(Fe),,,,,,,Micro
-20,,Tiger Iron,,Unkown Locality,Baryte,,,,,,,,
-21,,,,Unkown Locality,Hematite,Jasper,Quartz,Var. Tiger's Eye,,,,,
-22,,Smokey Quartz,,Unkown Locality,Fluorapophyllite-(K),,,,,,,,NEEDS ID
-23,,Smokey Quartz,,Unkown Locality,Quartz,,,,,,,,
-24,,Agate after Baryte Psuedomorph,,"The Poison Strip, Thompsons Mining District, Grand County, Utah, USA",Quartz,,,,,,,,
-25,,Amethyst and Bixbyite on Rhyolite,,"Marysvale Mining District, Piute County, Utah, USA",Quartz,,,,,,,,
-26,,,,"San Rafael Swell Mining District, Emery County, Utah, USA",Quartz,Var. Amethyst,Bixbyite-(Fe),,,,,,
-27,,Smokey Quartz on K-Feldspar,,"Rock Corral, Beaver County, Utah, USA",Quartz,Calcite,,,,,,,
-28,,,,,Quartz,Var. Smokey Quartz,Orthoclase,Microcline,,,,,
-,,,,"San Rafael Swell Mining District, Emery County, Utah, USA",,,,,,,,,
-30,,Almandine Garnet,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Calcite,Quartz,,,,,,,
-31,,Dugway Geode,,"Dugway geode beds, Dugway Pass area, Juab County, Utah, USA",Almandine,,,,,,,,
-32,,Epidote on Quartz,,"Şemdinli, Şemdinli District, Hakkâri Province, Turkey",Quartz,,,,,,,,
-33,,Citrine,,Unkown Locality,Epidote,Quartz,,,,,,,
-34,,,,Unkown Locality,Quartz,,,,,,,,
-35,,,,"Blue Grotto Prospect, Blue Crystal Mine, Lisbon Valley Mining District, San Juan County, Utah, USA",Calcite,Pyrite,,,,,,,
-36,,Schorl Tourmaline with Smokey Quartz and Hyalite Opal,,"Erongo Mountains, Erongo Region, Namibia",Azurite,Malachite,,,,,,,
-37,,Pyrite on Fluorite,,"El Hammam Mine, El Hammam, Ait Mimoune Caïdat, Khémisset Cercle, Khémisset Province, Rabat-Salé-Kénitra Region, Morocco",Schorl,Quartz,Opal,,,,,,Fluorescent
-38,,,,"Blanchard Mine, Bingham, Hansonburg District, Socorro County, New Mexico, USA",Pyrite,Fluorite,,,,,,,Fluorescent
-39,,,,"Ojuela Mine, Mapimí, Mapimí Municipality, Durango, Mexico",Fluorite,,,,,,,,Fluorescent
-40,,,,"Ojuela Mine, Mapimí, Mapimí Municipality, Durango, Mexico",Fluorite,,,,,,,,Fluorescent
-41,,,,"Ojuela Mine, Mapimí, Mapimí Municipality, Durango, Mexico",Fluorite,,,,,,,,Fluorescent
-42,,Sanidine Var. Moonstone,,"Pili Mine, Saucillo Municipality, Chihuahua, Mexico",Fluorite,,,,,,,,Fluorescent
-43,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Sanidine,Calcite,,,,,,,Fluorescent
-44,,,,,Topaz,Pseudobrookite,Bixbyite-(Fe),,,,,,
+Catalog ID,Min ID,Specimen Title,Date of Acquisition,Locality,Species 1,Species 2,Species 3,Species 4,Species 5,Dimensions,Max Crystal Size,Storage Location,Notes,Species Info,MinID
+1,,Grape Agate,,"San Rafael Swell Mining District, Emery County, Utah, USA",Quartz,Var. Chalcedony,,,,,,,,"https://www.mindat.org/min-3337.html
+https://www.mindat.org/min-960.html","3337, 960"
+2,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,Hematite,,,,,,,Micro,"https://www.mindat.org/min-3996.html
+https://www.mindat.org/min-1856.html","3996, 1856"
+3,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,,,,,,,,Micro,https://www.mindat.org/min-3996.html,3996
+4,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,Ilmenite,,,,,,,Micro,"https://www.mindat.org/min-3996.html
+https://www.mindat.org/min-2013.html","3996, 2013"
+5,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,Hematite,,,,,,,"Micro, hematite inclusion","https://www.mindat.org/min-3996.html
+https://www.mindat.org/min-1856.html","3996, 1856"
+6,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,,,,,,,,Micro,https://www.mindat.org/min-3996.html,3996
+7,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,,,,,,,,Micro,https://www.mindat.org/min-3996.html,3996
+,,,,,,,,,,,,,,,
+9,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,,,,,,,,Micro,https://www.mindat.org/min-3996.html,3996
+10,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,Hematite,,,,,,,"Micro, hematite inclusion","https://www.mindat.org/min-3996.html
+https://www.mindat.org/min-1856.html","3996, 1856"
+11,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,,,,,,,,Micro,https://www.mindat.org/min-3996.html,3996
+12,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,,,,,,,,Micro,https://www.mindat.org/min-3996.html,3996
+13,,,,"Marysvale Mining District, Piute County, Utah, USA",Bixbyite-(Fe),,,,,,,,Micro,https://www.mindat.org/min-55700.html,55700
+14,8RD-LHQ,,,"Navidad Mine, Indé Municipality, Durango, Mexico",Creedite,Fluorite,,,,,,,Fluorescent,"https://www.mindat.org/min-1151.html
+https://www.mindat.org/min-1576.html","1151, 1576"
+15,,,,"Katanga, DR Congo",Malachite,,,,,,,,,https://www.mindat.org/min-2550.html,2550
+16,,Brenham Meteorite,,"Brenham meteorite, Kimberly farm, Kiowa County, Kansas, USA",Iron,Taenite,Forsterite,,,,,,Iron (Var: Kamacite),"https://www.mindat.org/min-2047.html
+https://www.mindat.org/min-3868.html
+https://www.mindat.org/min-1584.html","2047, 3868, 1584"
+17,,,,Unkown Locality,Fluorapophyllite-(K),Stilbite-Ca,,,,,,,,"https://www.mindat.org/min-1573.html
+https://www.mindat.org/min-7313.html","1573, 7313"
+18,,,,Unkown Locality,Wulfenite,,,,,,,,,https://www.mindat.org/min-4322.html,4322
+19,,Amethyst and Bixbyite,,"Marysvale Mining District, Piute County, Utah, USA",Quartz,Bixbyite-(Fe),,,,,,,Micro,"https://www.mindat.org/min-3337.html
+https://www.mindat.org/min-55700.html","3337, 55700"
+20,,,,Unkown Locality,Baryte,,,,,,,,,https://www.mindat.org/min-549.html,549
+21,,Tiger Iron,,Unkown Locality,Hematite,Jasper,Quartz,Var. Tiger's Eye,,,,,,"https://www.mindat.org/min-1856.html
+https://www.mindat.org/min-2082.html
+https://www.mindat.org/min-3337.html
+https://www.mindat.org/min-3960.html","1856, 2082, 3337, 3960"
+22,,,,Unkown Locality,Fluorapophyllite-(K),,,,,,,,NEEDS ID,https://www.mindat.org/min-1573.html,1573
+23,,Smokey Quartz,,Unkown Locality,Quartz,,,,,,,,,https://www.mindat.org/min-3337.html,3337
+24,,Smokey Quartz,,Unkown Locality,Quartz,,,,,,,,,https://www.mindat.org/min-3337.html,3337
+25,,Agate after Baryte Psuedomorph,,"The Poison Strip, Thompsons Mining District, Grand County, Utah, USA",Quartz,,,,,,,,,https://www.mindat.org/min-3337.html,3337
+26,,Amethyst and Bixbyite on Rhyolite,,"Marysvale Mining District, Piute County, Utah, USA",Quartz,Var. Amethyst,Bixbyite-(Fe),,,,,,,"https://www.mindat.org/min-3337.html
+https://www.mindat.org/min-3337.html
+https://www.mindat.org/min-55700.html","3337, 3337, 55700"
+27,,,,"San Rafael Swell Mining District, Emery County, Utah, USA",Quartz,Calcite,,,,,,,,"https://www.mindat.org/min-3337.html
+https://www.mindat.org/min-859.html","3337, 859"
+28,,Smokey Quartz on K-Feldspar,,"Rock Corral, Beaver County, Utah, USA",Quartz,Var. Smokey Quartz,Orthoclase,Microcline,,,,,,"https://www.mindat.org/min-3337.html
+https://www.mindat.org/min-3689.html
+https://www.mindat.org/min-3026.html
+https://www.mindat.org/min-2704.html","3337, 3689, 3026, 2704"
+,,,,,,,,,,,,,,,
+30,,,,"San Rafael Swell Mining District, Emery County, Utah, USA",Calcite,Quartz,,,,,,,,"https://www.mindat.org/min-859.html
+https://www.mindat.org/min-3337.html","859, 3337"
+31,,Almandine Garnet,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Almandine,,,,,,,,,https://www.mindat.org/min-452.html,452
+32,,Dugway Geode,,"Dugway geode beds, Dugway Pass area, Juab County, Utah, USA",Quartz,,,,,,,,,https://www.mindat.org/min-3337.html,3337
+33,,Epidote on Quartz,,"Şemdinli, Şemdinli District, Hakkâri Province, Turkey",Epidote,Quartz,,,,,,,,"https://www.mindat.org/min-1389.html
+https://www.mindat.org/min-3337.html","1389, 3337"
+34,,Citrine,,Unkown Locality,Quartz,,,,,,,,,https://www.mindat.org/min-3337.html,3337
+35,,,,Unkown Locality,Calcite,Pyrite,,,,,,,,"https://www.mindat.org/min-859.html
+https://www.mindat.org/min-3314.html","859, 3314"
+36,,,,"Blue Grotto Prospect, Blue Crystal Mine, Lisbon Valley Mining District, San Juan County, Utah, USA",Azurite,Malachite,,,,,,,,"https://www.mindat.org/min-447.html
+https://www.mindat.org/min-2550.html","447, 2550"
+37,,Schorl Tourmaline with Smokey Quartz and Hyalite Opal,,"Erongo Mountains, Erongo Region, Namibia",Schorl,Quartz,Opal,,,,,,Fluorescent,"https://www.mindat.org/min-3578.html
+https://www.mindat.org/min-3337.html
+https://www.mindat.org/min-3004.html","3578, 3337, 3004"
+38,,Pyrite on Fluorite,,"El Hammam Mine, El Hammam, Ait Mimoune Caïdat, Khémisset Cercle, Khémisset Province, Rabat-Salé-Kénitra Region, Morocco",Pyrite,Fluorite,,,,,,,Fluorescent,"https://www.mindat.org/min-3314.html
+https://www.mindat.org/min-1576.html","3314, 1576"
+39,,,,"Blanchard Mine, Bingham, Hansonburg District, Socorro County, New Mexico, USA",Fluorite,,,,,,,,Fluorescent,https://www.mindat.org/min-1576.html,1576
+40,,,,"Ojuela Mine, Mapimí, Mapimí Municipality, Durango, Mexico",Fluorite,,,,,,,,Fluorescent,https://www.mindat.org/min-1576.html,1576
+41,,,,"Ojuela Mine, Mapimí, Mapimí Municipality, Durango, Mexico",Fluorite,,,,,,,,Fluorescent,https://www.mindat.org/min-1576.html,1576
+42,,,,"Ojuela Mine, Mapimí, Mapimí Municipality, Durango, Mexico",Fluorite,,,,,,,,Fluorescent,https://www.mindat.org/min-1576.html,1576
+43,,Sanidine Var. Moonstone,,"Pili Mine, Saucillo Municipality, Chihuahua, Mexico",Sanidine,Calcite,,,,,,,Fluorescent,"https://www.mindat.org/min-3521.html
+https://www.mindat.org/min-859.html","3521, 859"
+44,,,,"Topaz Mountain, Thomas Range, Juab County, Utah, USA",Topaz,Pseudobrookite,Bixbyite-(Fe),,,,,,,"https://www.mindat.org/min-3996.html
+https://www.mindat.org/min-3302.html
+https://www.mindat.org/min-55700.html","3996, 3302, 55700"

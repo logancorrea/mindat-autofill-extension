@@ -65,16 +65,40 @@ async function autofillMindatForm(catalogId) {
   } else {
     // Legacy support for species1-species5
     const species = [row["Species1"], row["Species2"], row["Species3"], row["Species4"], row["Species5"]];
-    species.forEach((val, idx) => {
-      if (val && idx < 8) {
-        const field = document.querySelector(`#cat_min${idx + 1}`);
-        if (field) {
-          field.value = val;
-          field.dispatchEvent(new Event('change', { bubbles: true })); // <-- trigger UI update
-        }
+    let speciesList = [];
+    species.forEach(val => {
+      if (val) {
+        // Split by comma and trim whitespace
+        val.split(",").forEach(s => {
+          const trimmed = s.trim();
+          if (trimmed) speciesList.push(trimmed);
+        });
       }
     });
+    console.log("Species list for autofill:", speciesList);
+    for (let idx = 0; idx < Math.min(speciesList.length, 8); idx++) {
+      const val = speciesList[idx];
+      const field = document.querySelector(`#cat_min${idx + 1}`);
+      if (field) {
+        try {
+          const resp = await fetch(`https://www.mindat.org/picker_class.php?flags=63&str=${encodeURIComponent(val)}`);
+          const data = await resp.json();
+          if (data && data.length > 0) {
+            field.value = data[0].id;
+            field.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+        } catch (e) {
+          console.warn("Species autofill failed for:", val, e);
+        }
+      }
+    }
   }
 
   console.log("✅ Form autofilled from CSV file");
 }
+
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  if (msg.type === 'autofill' && msg.catalogId) {
+    window.dispatchEvent(new CustomEvent('mindat-autofill', { detail: { catalogId: msg.catalogId } }));
+  }
+});
