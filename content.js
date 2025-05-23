@@ -14,20 +14,14 @@ async function autofillMindatForm(catalogId) {
   const response = await fetch(url);
   const csvText = await response.text();
 
-  // Parse CSV (simple parser for your format)
-  const rows = csvText.split('\n').map(row => row.split(','));
-  const headers = rows[0].map(h => h.replace(/(^"|"$)/g, '').trim());
-  const dataRows = rows.slice(1);
-
-  // Find the row with the matching Catalog ID
-  const row = dataRows.find(r => r[0] === catalogId);
+  // Parse CSV robustly
+  const parsed = Papa.parse(csvText, { header: true });
+  const dataRows = parsed.data;
+  const row = dataRows.find(r => r["Catalog ID"] === catalogId);
   if (!row) return console.warn("Not found");
+  const data = row;
 
-  // Map row to object
-  const data = {};
-  headers.forEach((h, i) => data[h] = (row[i] || "").replace(/(^"|"$)/g, '').trim());
-
-  // Now autofill as before
+  // Autofill form fields
   document.querySelector("#cat_catnum").value = data["Catalog ID"] || "";
   document.querySelector("#cat_title").value = data["Specimen Title"] || "";
   document.querySelector("#cat_locality").value = data["Locality"] || "";
