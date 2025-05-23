@@ -132,6 +132,34 @@ async function autofillMindatForm(catalogId) {
     }
   }
 
+  // Autofill mineral/fossil/rock pickers from Species ID column (newline-separated IDs)
+  if (data["Species ID"]) {
+    // Split on newlines, trim, and filter out empty lines
+    const speciesIds = data["Species ID"]
+      .split(/\r?\n/)
+      .map(s => s.trim())
+      .filter(Boolean);
+
+    // If you have names in a parallel column:
+    const speciesNames = (data["Species Info"] || "")
+      .split(/\r?\n/)
+      .map(s => s.trim());
+
+    speciesIds.forEach((id, idx) => {
+      const minInput = document.querySelector(`#cat_min${idx + 1}`);
+      const minButton = document.querySelector(`#picker_for_cat_min${idx + 1}`);
+      if (minInput) {
+        minInput.value = id;
+        minInput.dispatchEvent(new Event('change', { bubbles: true }));
+        // Set button label if name is available
+        if (minButton && speciesNames[idx]) {
+          minButton.textContent = speciesNames[idx];
+        }
+        console.log(`Set cat_min${idx + 1} to mineral ID:`, id, "name:", speciesNames[idx]);
+      }
+    });
+  }
+
   console.log("✅ Form autofilled from CSV file");
   const yearSel = document.querySelector("#cat_acqyear");
   if (yearSel) {
