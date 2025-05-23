@@ -108,11 +108,27 @@ async function autofillMindatForm(catalogId) {
     });
   } else {
     // Legacy support for species1-species5
-    for (let i = 1; i <= 5; i++) {
-      const species = data[`Species ${i}`];
-      if (species) {
-        document.querySelector(`#cat_min${i}`).value = species;
+    for (let i = 1; i <= 8; i++) {
+      // Use your CSV columns: "Species ID", "Species ID 2", ..., "Species ID 8"
+      const speciesId = data[`Species ID${i > 1 ? ' ' + i : ''}`]; // "Species ID", "Species ID 2", ...
+      if (speciesId) {
+        const minInput = document.querySelector(`#cat_min${i}`);
+        if (minInput) {
+          minInput.value = speciesId;
+          minInput.dispatchEvent(new Event('change', { bubbles: true }));
+          console.log(`Set cat_min${i} to mineral ID:`, speciesId);
+        }
       }
+    }
+  }
+
+  // Autofill the first mineral/fossil/rock name using Species ID
+  if (data["Species ID"]) {
+    const minInput = document.querySelector("#cat_min1");
+    if (minInput) {
+      minInput.value = data["Species ID"];
+      minInput.dispatchEvent(new Event('change', { bubbles: true }));
+      console.log("Set cat_min1 to mineral ID:", data["Species ID"]);
     }
   }
 
