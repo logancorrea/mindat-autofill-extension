@@ -1,3 +1,5 @@
+console.log("🔌 Mindat Autofill content script loaded");
+
 // Reusable autofill logic
 async function autofillRecord(catalogId) {
   const { csvData } = await new Promise(r => chrome.storage.local.get('csvData', r));
