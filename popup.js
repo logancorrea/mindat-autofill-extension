@@ -4,12 +4,16 @@ const fillBtn     = document.getElementById('fillBtn');
 const fileInput   = document.getElementById('csvFile');
 
 // 1) CSV loader
-fileInput.addEventListener('change', e => {
+fileInput.addEventListener('change', async e => {
   const file = e.target.files[0];
-  if (!file) return statusEl.textContent = 'No file selected';
-
+  if (!file) {
+    statusEl.textContent = 'No file selected';
+    return;
+  }
   statusEl.textContent = 'Parsing CSV…';
-  Papa.parse(file, {
+
+  const text = await file.text();
+  Papa.parse(text, {
     header: true,
     skipEmptyLines: true,
     complete: results => {
@@ -20,8 +24,9 @@ fileInput.addEventListener('change', e => {
       });
       chrome.storage.local.set({ csvData }, () => {
         statusEl.textContent = `Loaded ${Object.keys(csvData).length} entries`;
-        catalogEl.disabled = false;
-        fillBtn.disabled = false;
+        catalogEl.removeAttribute('disabled');
+        fillBtn.removeAttribute('disabled');
+        catalogEl.focus();
       });
     },
     error: err => {
