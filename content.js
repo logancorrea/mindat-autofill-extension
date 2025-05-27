@@ -10,10 +10,14 @@ async function autofillRecord(catalogId) {
   function set(selector, val) {
     const el = document.querySelector(selector);
     if (!el) return;
+    // Treat "na", "n/a", "nan" (case-insensitive) as blank
+    const blankVals = ["na", "n/a", "nan"];
+    let v = (typeof val === "string") ? val.trim() : val;
+    if (v && blankVals.includes(String(v).toLowerCase())) v = "";
     if (el.tagName === 'INPUT' && el.type === 'checkbox') {
-      el.checked = !!val && String(val).toLowerCase() !== 'false' && val !== '0';
+      el.checked = !!v && String(v).toLowerCase() !== 'false' && v !== '0';
     } else {
-      el.value = val ?? '';
+      el.value = v ?? '';
     }
   }
 
