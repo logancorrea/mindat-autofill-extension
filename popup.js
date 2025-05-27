@@ -42,7 +42,10 @@ fillBtn.addEventListener('click', () => {
   if (!id) return alert('Please enter a Catalog ID');
   
   // find active tab
-  chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+  chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
+    if (!tabs[0]) {
+      return alert('Could not find the Mindat tab to autofill.');
+    }
     chrome.tabs.sendMessage(
       tabs[0].id,
       { action: 'fill', catalogId: id }
