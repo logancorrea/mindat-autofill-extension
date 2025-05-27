@@ -3,7 +3,8 @@
   "name": "Mindat Autofill",
   "version": "1.0",
   "permissions": [
-    "storage"
+    "storage",
+    "tabs"
   ],
   "action": {
     "default_popup": "popup.html",
@@ -12,7 +13,7 @@
   "content_scripts": [
     {
       "matches": ["https://www.mindat.org/catedit.php*"],
-      "js": ["contents.js"]
+      "js": ["content.js"]
     }
   ]
 }
