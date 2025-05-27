@@ -28,10 +28,10 @@ async function autofillRecord(catalogId) {
 
   // Acquisition date: "YYYY-MM-DD"
   if (entry['Date of Acquisition']) {
-    const [y, m, d] = entry['Date of Acquisition'].split('-');
-    set('#cat_acqday',   parseInt(d, 10));
-    set('#cat_acqmonth', parseInt(m, 10));
-    set('#cat_acqyear',  parseInt(y, 10));
+    const parts = entry['Date of Acquisition'].split('-');
+    set('#cat_acqyear',  parts[0] ? parseInt(parts[0], 10) : '');
+    set('#cat_acqmonth', parts[1] ? parseInt(parts[1], 10) : '');
+    set('#cat_acqday',   parts[2] ? parseInt(parts[2], 10) : '');
   }
 
   // Dimensions: "WxHxD"
@@ -52,10 +52,10 @@ async function autofillRecord(catalogId) {
 
   // Date specimen collected
   if (entry['Date Specimen Collected']) {
-    const [y, m, d] = entry['Date Specimen Collected'].split('-');
-    set('#cat_colday',   parseInt(d, 10));
-    set('#cat_colmonth', parseInt(m, 10));
-    set('#cat_colyear',  parseInt(y, 10));
+    const parts = entry['Date Specimen Collected'].split('-');
+    set('#cat_colyear',  parts[0] ? parseInt(parts[0], 10) : '');
+    set('#cat_colmonth', parts[1] ? parseInt(parts[1], 10) : '');
+    set('#cat_colday',   parts[2] ? parseInt(parts[2], 10) : '');
   }
 
   // Deaccessioned, Deaccessioned to
