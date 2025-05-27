@@ -6,13 +6,16 @@
     "storage",
     "tabs"
   ],
+  "host_permissions": [
+    "*://www.mindat.org/*"
+  ],
   "action": {
     "default_popup": "popup.html",
     "default_title": "Load your collection CSV"
   },
   "content_scripts": [
     {
-      "matches": ["https://www.mindat.org/catedit.php*"],
+      "matches": ["*://www.mindat.org/catedit.php*"],
       "js": ["content.js"]
     }
   ]

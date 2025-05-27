@@ -40,15 +40,19 @@ fileInput.addEventListener('change', async e => {
 fillBtn.addEventListener('click', () => {
   const id = catalogEl.value.trim();
   if (!id) return alert('Please enter a Catalog ID');
-  
-  // find active tab
-  chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
-    if (!tabs[0]) {
-      return alert('Could not find the Mindat tab to autofill.');
+
+  // Find the Mindat edit page by URL, not the popup
+  chrome.tabs.query(
+    { url: "*://www.mindat.org/catedit.php*" },
+    (tabs) => {
+      if (!tabs.length) {
+        return alert("❌ Couldn't find an open Mindat edit tab.");
+      }
+      chrome.tabs.sendMessage(
+        tabs[0].id,
+        { action: 'fill', catalogId: id }
+      );
     }
-    chrome.tabs.sendMessage(
-      tabs[0].id,
-      { action: 'fill', catalogId: id }
-    );
-  });
+  );
 });
+
