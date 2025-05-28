@@ -124,6 +124,15 @@ async function autofillMineralsByName(mineralNames) {
       console.error(`❌ No results for mineral: ${mineralName}`);
     }
   }
+
+    // Force-remove any leftover picker overlay elements
+  ['picker_be_gone','picker_wrap','picker_main','picker_main2'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.remove();
+      console.log(`🗑️ Removed overlay element #${id}`);
+    }
+  });
 }
 
 // Listen for messages from popup
