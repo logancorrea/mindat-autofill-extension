@@ -81,9 +81,16 @@ async function autofillRecord(catalogId) {
 }
 
 // Listen for messages from popup
-chrome.runtime.onMessage.addListener((msg, sender) => {
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg.action === 'fill' && msg.catalogId) {
-    autofillRecord(msg.catalogId);
+    autofillRecord(msg.catalogId)
+      .then(() => {
+        sendResponse({ success: true });
+      })
+      .catch((err) => {
+        sendResponse({ success: false, error: err?.message || String(err) });
+      });
+    return true; // Keep the message channel open for async response
   }
 });
 

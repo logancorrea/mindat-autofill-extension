@@ -41,16 +41,25 @@ fillBtn.addEventListener('click', () => {
   const id = catalogEl.value.trim();
   if (!id) return alert('Please enter a Catalog ID');
 
-  // Find the Mindat edit page by URL, not the popup
   chrome.tabs.query(
     { url: "*://www.mindat.org/catedit.php*" },
     (tabs) => {
       if (!tabs.length) {
-        return alert("❌ Couldn't find an open Mindat edit tab.");
+        statusEl.textContent = "❌ Couldn't find an open Mindat edit tab.";
+        return;
       }
       chrome.tabs.sendMessage(
         tabs[0].id,
-        { action: 'fill', catalogId: id }
+        { action: 'fill', catalogId: id },
+        (response) => {
+          if (chrome.runtime.lastError) {
+            statusEl.textContent = "❌ Error: " + chrome.runtime.lastError.message;
+          } else if (response && response.success) {
+            statusEl.textContent = "✅ Autofill completed!";
+          } else {
+            statusEl.textContent = "❌ Autofill failed: " + (response?.error || "Unknown error");
+          }
+        }
       );
     }
   );
