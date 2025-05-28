@@ -9,14 +9,19 @@
   "host_permissions": [
     "*://www.mindat.org/*"
   ],
-  "action": {
-    "default_popup": "popup.html",
-    "default_title": "Load your collection CSV"
-  },
   "content_scripts": [
     {
       "matches": ["*://www.mindat.org/catedit.php*"],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "chrome_url_overrides": {
+    "newtab": "tab.html"
+  },
+  "action": {
+    "default_title": "Open Mindat Autofill Tab"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
 }
