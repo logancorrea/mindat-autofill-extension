@@ -83,8 +83,18 @@ async function autofillRecord(catalogId) {
 // Autofill minerals by simulating picker UI interaction
 async function autofillMineralsByName(mineralNames) {
   for (let i = 0; i < mineralNames.length; i++) {
-    const mineralName = mineralNames[i];
-    const pickerBtn = document.querySelector(`#picker_for_cat_min${i + 1}`);
+    // Wait for the correct "Add" button to be enabled and visible
+    const btnId = `#picker_for_cat_min${i + 1}`;
+    await new Promise(resolve => {
+      const check = () => {
+        const btn = document.querySelector(btnId);
+        if (btn && !btn.disabled && btn.offsetParent !== null) resolve();
+        else setTimeout(check, 100);
+      };
+      check();
+    });
+
+    const pickerBtn = document.querySelector(btnId);
     if (!pickerBtn) {
       console.warn(`No picker button for cat_min${i + 1}`);
       continue;
@@ -102,6 +112,7 @@ async function autofillMineralsByName(mineralNames) {
     });
 
     // Enter mineral name in search box
+    const mineralName = mineralNames[i];
     const searchBox = document.querySelector("#picker_text");
     searchBox.value = mineralName;
     searchBox.dispatchEvent(new Event('input', { bubbles: true }));
@@ -123,9 +134,12 @@ async function autofillMineralsByName(mineralNames) {
     } else {
       console.error(`❌ No results for mineral: ${mineralName}`);
     }
+
+    // Wait for Mindat to update the UI and enable the next slot
+    await new Promise(resolve => setTimeout(resolve, 400));
   }
 
-    // Force-remove any leftover picker overlay elements
+  // Force-remove any leftover picker overlay elements
   ['picker_be_gone','picker_wrap','picker_main','picker_main2'].forEach(id => {
     const el = document.getElementById(id);
     if (el) {
